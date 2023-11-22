@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/task_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tag"
+        android:inputType="text"
+        android:textColorHint="@android:color/black"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/task_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:inputType="text"
+        android:textColorHint="@android:color/black"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/task_deadline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Deadline (DD/MM/YYYY)"
+        android:inputType="date"
+        android:textColorHint="@android:color/black"
+        android:textSize="24sp" />
+
+    <CheckBox
+        android:id="@+id/task_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Completed"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/task_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/black"
+        android:text="Create Task"
+        android:textSize="24sp" />
+
+</LinearLayout>

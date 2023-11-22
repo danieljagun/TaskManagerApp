@@ -8,9 +8,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -79,6 +81,19 @@ public class MainActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.action_task) {
+            Toast.makeText(MainActivity.this, "Loading Task Screen", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, CreateTask.class);
+            startActivity(intent);
+            return true;
+        }
+        return false;
     }
 
 }
