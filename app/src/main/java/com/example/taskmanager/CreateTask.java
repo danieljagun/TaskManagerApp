@@ -2,7 +2,10 @@ package com.example.taskmanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -34,7 +37,6 @@ public class CreateTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_task);
 
-        // Initialize Firebase
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
@@ -58,7 +60,6 @@ public class CreateTask extends AppCompatActivity {
         String deadlineStr = taskDeadline.getText().toString().trim();
         boolean status = taskStatus.isChecked();
 
-        // Validate and process deadline
         Date deadline = null;
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -68,10 +69,9 @@ public class CreateTask extends AppCompatActivity {
             Toast.makeText(this, "Invalid date format", Toast.LENGTH_SHORT).show();
             return;
         }
-        // Firebase Firestore Collection Reference
+
         CollectionReference tasksRef = db.collection("tasks");
 
-        // Create a Task object
         Map<String, Object> task = new HashMap<>();
         task.put("tag", tag);
         task.put("description", description);
@@ -79,19 +79,38 @@ public class CreateTask extends AppCompatActivity {
         task.put("status", status);
         task.put("userId", auth.getCurrentUser().getUid());
 
-        // Add the task to Firestore
         tasksRef.add(task)
                 .addOnSuccessListener(documentReference -> {
                     Toast.makeText(CreateTask.this, "Task created successfully", Toast.LENGTH_SHORT).show();
-                    // Clear input fields after creating task
                     taskTag.getText().clear();
                     taskDescription.getText().clear();
                     taskDeadline.getText().clear();
                     taskStatus.setChecked(false);
                 })
                 .addOnFailureListener(e -> Toast.makeText(CreateTask.this, "Failed to create task", Toast.LENGTH_SHORT).show());
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.action_task) {
+            Toast.makeText(CreateTask.this, "Loading Task Screen", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(CreateTask.this, ViewTask.class);
+            startActivity(intent);
+            return true;
+        } else if (itemId == R.id.action_seetasks) {
+            Toast.makeText(CreateTask.this, "Loading Tasks", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(CreateTask.this, ViewTask.class);
+            startActivity(intent);
+            return true;
+        }
+        return false;
     }
 }
