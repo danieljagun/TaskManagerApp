@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue)));*/
-
         auth = FirebaseAuth.getInstance();
         logoutButton = findViewById(R.id.logout_button);
         userNameTextView = findViewById(R.id.user_name_text_view);
@@ -42,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser user = auth.getCurrentUser();
         if (user != null) {
-            // Assuming the user details are retrieved from Firestore after sign-in
+
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             DocumentReference userRef = db.collection("users").document(user.getUid());
 
@@ -53,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                         String userName = documentSnapshot.getString("name");
                         String userPhone = documentSnapshot.getString("phone");
 
-                        // Set the user's name and phone in the TextViews
                         userNameTextView.setText(userName);
                         userPhoneTextView.setText(userPhone);
                     } else {
@@ -92,8 +89,12 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, CreateTask.class);
             startActivity(intent);
             return true;
+        } else if (itemId == R.id.action_seetasks) {
+            Toast.makeText(MainActivity.this, "Loading Tasks", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, ViewTask.class);
+            startActivity(intent);
+            return true;
         }
         return false;
     }
-
 }

@@ -88,9 +88,8 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private boolean isValidPhoneNumber(String phoneNumber) {
-        // Add your phone number validation logic here
-        // Example: check if it contains only digits and a certain length
-        return phoneNumber.matches("\\d{10}"); // Validates 10-digit phone number
+
+        return phoneNumber.matches("\\d{10}");
     }
 
     private void createUserWithEmailAndPassword(String email, String password, String name, String phoneNumber) {
@@ -100,12 +99,11 @@ public class SignUpActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     if (user != null) {
-                        // Create a HashMap to store user data
+
                         Map<String, Object> userData = new HashMap<>();
                         userData.put("name", name);
                         userData.put("phone", phoneNumber);
 
-                        // Get reference to Firestore and store user data in a "users" collection
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                         db.collection("users").document(user.getUid())
                                 .set(userData)
