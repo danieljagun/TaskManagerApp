@@ -29,6 +29,10 @@ public class Task {
         return taskId;
     }
 
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
+
     public String getTag() {
         return tag;
     }
@@ -44,8 +48,12 @@ public class Task {
     public boolean isStatus() {
         return status;
     }
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
     public String getUserId() {
         return userId;
     }
+
 }
