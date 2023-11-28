@@ -1,10 +1,6 @@
 package com.example.taskmanager;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -53,14 +52,12 @@ public class MainActivity extends AppCompatActivity {
 
                         userNameTextView.setText(userName);
                         userPhoneTextView.setText(userPhone);
-                    } else {
-                        Log.d("MainActivity", "Document does not exist");
                     }
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Log.e("MainActivity", "Error fetching user details: " + e.getMessage());
+                    Toast.makeText(MainActivity.this, "Failed to fetch user details", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -92,6 +89,11 @@ public class MainActivity extends AppCompatActivity {
         } else if (itemId == R.id.action_seetasks) {
             Toast.makeText(MainActivity.this, "Loading Tasks", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(MainActivity.this, ViewTask.class);
+            startActivity(intent);
+            return true;
+        } else if (itemId == R.id.action_homepage) {
+            Toast.makeText(MainActivity.this, "Returning to homepage", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
             startActivity(intent);
             return true;
         }

@@ -4,19 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".ViewTask">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="542dp" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/button_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:src="@drawable/baseline_add"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_add"
+        android:layout_width="83dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="TODO"
+        android:src="@drawable/baseline_add" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="301dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="8dp"
+        android:background="@drawable/search_view_bg"
+        app:queryHint="Search Here ...."
+        app:iconifiedByDefault="false"
+
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+

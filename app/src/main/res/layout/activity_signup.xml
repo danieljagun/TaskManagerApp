@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/background"
     android:padding="16dp">
 
     <TextView
@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="Create an Account"
         android:textSize="24sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:id="@+id/signup_title"
         android:layout_marginTop="40dp"
@@ -23,6 +23,7 @@
         android:layout_below="@id/signup_title"
         android:layout_marginTop="40dp"
         android:hint="Full Name"
+        android:textColorHint="@color/white"
         android:inputType="text"
         android:background="@drawable/custom_edittext"
         android:textColor="@color/black"
@@ -35,6 +36,7 @@
         android:layout_below="@id/signup_name"
         android:layout_marginTop="20dp"
         android:hint="Email"
+        android:textColorHint="@color/white"
         android:inputType="textEmailAddress"
         android:background="@drawable/custom_edittext"
         android:textColor="@color/black"
@@ -47,6 +49,7 @@
         android:layout_below="@id/signup_email"
         android:layout_marginTop="20dp"
         android:hint="Password"
+        android:textColorHint="@color/white"
         android:inputType="textPassword"
         android:background="@drawable/custom_edittext"
         android:textColor="@color/black"
@@ -59,6 +62,7 @@
         android:layout_below="@id/signup_password"
         android:layout_marginTop="20dp"
         android:hint="Phone Number"
+        android:textColorHint="@color/white"
         android:inputType="phone"
         android:background="@drawable/custom_edittext"
         android:textColor="@color/black"
@@ -72,6 +76,7 @@
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/blue"
         android:text="Sign Up"
+        android:textColorHint="@color/white"
         android:textSize="18sp"
         android:textColor="@color/white"
         android:padding="16dp"/>
