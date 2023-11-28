@@ -1,7 +1,5 @@
 package com.example.taskmanager;
 
-import android.widget.CheckBox;
-
 import java.util.Date;
 
 public class Task {
@@ -51,7 +49,6 @@ public class Task {
     public void setStatus(boolean status) {
         this.status = status;
     }
-
     public String getUserId() {
         return userId;
     }

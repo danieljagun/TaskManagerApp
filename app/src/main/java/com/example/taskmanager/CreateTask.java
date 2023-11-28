@@ -102,12 +102,17 @@ public class CreateTask extends AppCompatActivity {
 
         if (itemId == R.id.action_task) {
             Toast.makeText(CreateTask.this, "Loading Task Screen", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(CreateTask.this, ViewTask.class);
+            Intent intent = new Intent(CreateTask.this, CreateTask.class);
             startActivity(intent);
             return true;
         } else if (itemId == R.id.action_seetasks) {
             Toast.makeText(CreateTask.this, "Loading Tasks", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(CreateTask.this, ViewTask.class);
+            startActivity(intent);
+            return true;
+        } else if (itemId == R.id.action_homepage) {
+            Toast.makeText(CreateTask.this, "Returning to homepage", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(CreateTask.this, MainActivity.class);
             startActivity(intent);
             return true;
         }

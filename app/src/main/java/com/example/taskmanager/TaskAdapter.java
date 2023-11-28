@@ -10,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
@@ -37,6 +35,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         return taskList;
     }
 
+    public void setTaskList(List<Task> taskList) {
+        this.taskList = taskList;
+        notifyDataSetChanged();
+    }
 
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
@@ -77,11 +79,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         return taskList.size();
     }
 
-    public void setTaskList(List<Task> taskList) {
-        this.taskList = taskList;
-        notifyDataSetChanged();
-    }
-
 
     public interface OnTaskItemClickListener {
         void onTaskClick(Task task);
@@ -110,7 +107,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             updateButton = itemView.findViewById(R.id.button_update_status);
 
         }
-
 
         public void bind(Task task) {
             tagTextView.setText(task.getTag());

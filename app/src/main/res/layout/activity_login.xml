@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/background"
     android:padding="16dp">
 
     <TextView
@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="Login to Your Account"
         android:textSize="24sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:textStyle="bold"/>
@@ -25,8 +25,9 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:background="@drawable/custom_edittext"
-        android:textColor="@color/black"
-        android:padding="12dp"/>
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:padding="14dp"/>
 
     <EditText
         android:id="@+id/login_password"
@@ -37,20 +38,31 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:background="@drawable/custom_edittext"
-        android:textColor="@color/black"
-        android:padding="12dp"/>
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:padding="14dp"/>
+
+
+    <CheckBox
+        android:id="@+id/stayLoggedInCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_password"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/white"
+        android:text="Stay logged in" />
 
     <Button
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/login_password"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="41dp"
         android:backgroundTint="@color/blue"
+        android:padding="16dp"
         android:text="Login"
-        android:textSize="18sp"
         android:textColor="@color/white"
-        android:padding="16dp"/>
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/signupRedirectText"
@@ -60,7 +72,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="Don't have an account? Sign Up"
-        android:textColor="@color/blue"
+        android:textColor="@color/white"
         android:textSize="16sp"/>
+
 
 </RelativeLayout>

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -12,7 +13,8 @@
         android:layout_height="wrap_content"
         android:hint="Tag"
         android:inputType="text"
-        android:textColorHint="@android:color/black"
+        android:textColor="@color/white"
+        android:textColorHint="@android:color/white"
         android:textSize="24sp" />
 
     <EditText
@@ -21,7 +23,8 @@
         android:layout_height="wrap_content"
         android:hint="Description"
         android:inputType="text"
-        android:textColorHint="@android:color/black"
+        android:textColor="@color/white"
+        android:textColorHint="@android:color/white"
         android:textSize="24sp" />
 
     <EditText
@@ -30,7 +33,8 @@
         android:layout_height="wrap_content"
         android:hint="Deadline (DD/MM/YYYY)"
         android:inputType="date"
-        android:textColorHint="@android:color/black"
+        android:textColor="@color/white"
+        android:textColorHint="@android:color/white"
         android:textSize="24sp" />
 
     <CheckBox
@@ -38,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Completed"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="18sp" />
 
     <Button

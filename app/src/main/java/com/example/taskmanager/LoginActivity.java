@@ -1,9 +1,12 @@
 package com.example.taskmanager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     private TextView signupRedirectText;
     private Button loginButton;
     private FirebaseFirestore db;
+    private CheckBox stayLoggedInCheckbox;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +43,13 @@ public class LoginActivity extends AppCompatActivity {
         loginPassword = findViewById(R.id.login_password);
         loginButton = findViewById(R.id.login_button);
         signupRedirectText = findViewById(R.id.signupRedirectText);
+        stayLoggedInCheckbox = findViewById(R.id.stayLoggedInCheckbox);
+
+        sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
 
         db = FirebaseFirestore.getInstance();
+
+        stayLoggedInCheckbox.setChecked(sharedPreferences.getBoolean("isChecked", false));
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +63,18 @@ public class LoginActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
+
+                                    if (stayLoggedInCheckbox.isChecked()) {
+
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putBoolean("isChecked", true);
+                                        editor.apply();
+                                    } else {
+
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.clear();
+                                        editor.apply();
+                                    }
                                     getUserDetails(auth.getCurrentUser().getUid());
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -73,7 +95,16 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
         });
+
+        stayLoggedInCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            }
+        });
     }
+
 
     private void getUserDetails(String userId) {
         DocumentReference userRef = db.collection("users").document(userId);
@@ -106,8 +137,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = auth.getCurrentUser();
-        if (currentUser != null) {
-            getUserDetails(currentUser.getUid());
+        if (currentUser != null && sharedPreferences.getBoolean("isChecked", false)) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
         }
     }
 }
